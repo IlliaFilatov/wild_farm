@@ -1,0 +1,102 @@
+.Menu {
+  box-sizing: border-box;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #ffc;
+  background: rgba(14, 10, 0, .8);
+  backdrop-filter: blur(3px);
+}
+.Decorations {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+
+  img {
+    filter: brightness(0%);
+    position: absolute;
+    width: 70px;
+  }
+  .aard {
+    top: 15px;
+    left: 15px;
+  }
+  .axii {
+    top: 15px;
+    right: 15px;
+  }
+  .igni {
+    bottom: 15px;
+    right: 15px;
+  }
+  .yrden {
+    bottom: 15px;
+    left: 15px;
+  }
+  .logo1, .logo2 {
+    left: 50%;
+    width: 250px;
+    transform: translateX(-50%);
+  }
+  .logo1 {
+    top: 10px;
+  }
+  .logo2 {
+    top: 40px;
+  }
+}
+
+.App {
+  box-sizing: border-box;
+  padding: 30px;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-areas: 
+    'mk fd fd fd fd fd st'
+    'in in in in in in in';
+  gap: 20px;
+  justify-items: center;
+  align-items: center;
+  background: url(./images/The_Witcher_3.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  perspective: 1000px;
+
+  .Field {
+    grid-area: fd;
+    box-sizing: border-box;
+    width: 400px;
+    height: 400px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    background: darkolivegreen;
+    border: 2px solid brown;
+    border-radius: 5px;
+    transform: rotateX(45deg);
+    box-shadow: 0px 5px 10px 4px rgba(0, 0, 0, .5);
+
+    .cell {
+      box-sizing: border-box;
+      border: 1px solid white;
+      transition: .1s all linear;
+
+      &:hover {
+        background: olive;
+        box-shadow: inset 0px 5px 5px 2px rgba(0, 0, 0, .5);
+      }
+    }
+  }
+  .Market {
+    grid-area: mk;
+  }
+  .Stock {
+    grid-area: st;
+  }
+  .Invent {
+    grid-area: in;
+    width: 500px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
