@@ -1,102 +1,362 @@
+$main-color: rgba(142,142,142,.5);
+
 .Menu {
+  position: relative;
   box-sizing: border-box;
-  padding: 20px;
+  padding: 10px;
   text-align: center;
-  border: 1px solid #ffc;
-  background: rgba(14, 10, 0, .8);
+  border: 1px solid $main-color;
+  background: rgba(22, 17, 10, .2);
   backdrop-filter: blur(3px);
+
+  .menu_name {
+    position: absolute;
+
+    img {
+      max-width: 100%;
+      width: auto;
+    }
+  }
+  .item {
+    position: relative;
+    box-sizing: border-box;
+    padding: 5px;
+    cursor: pointer;
+
+    img {
+      box-sizing: border-box;
+      max-height: 100%;
+      max-width: 100%;
+      transition: .03s all linear;
+    }
+    .info {
+      box-sizing: border-box;
+      position: absolute;
+      top: 15px;
+      padding: 5px 20px;
+      min-width: 100px;
+      height: 50px;
+      background: rgba(22, 17, 10, .2);
+      backdrop-filter: blur(3px);
+      color: $main-color;
+      font-size: 18px;
+      line-height: 40px;
+      text-align: left;
+      text-transform: uppercase;
+      border-top: 1px solid $main-color;
+      border-bottom: 1px solid $main-color;
+      white-space: nowrap;
+      transition: .1s all linear;
+      opacity: 0;
+
+      p, span {
+        margin: 0;
+      }
+      img {
+        position: absolute;
+        right: -10px;
+        top: 15px;
+        display: inline-block;
+        height: 20px;
+      }
+    }
+    &:before {
+      content: '';
+      opacity: 0;
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      width: 50px;
+      height: 50px;
+      transform: rotate(45deg);
+      background: $main-color;
+      border: 1px solid $main-color;
+    }
+    &:hover {
+      img {
+        transform: scale(1.1);
+      }
+      .info {
+        opacity: 1;
+      }
+      &:before {
+        opacity: 1;
+      }
+    }
+  }
 }
 .Decorations {
   position: fixed;
   width: 100%;
   height: 100%;
+  backdrop-filter: sepia(50%) brightness(50%);
 
-  img {
-    filter: brightness(0%);
+  .sign {
+    filter: invert(50%) brightness(110%);
     position: absolute;
-    width: 70px;
+    
+    &.axii {
+      top: 40px;
+      left: 40px;
+    }
+    &.aard {
+      top: 40px;
+      right: 40px;
+    }
+    &.igni {
+      bottom: 40px;
+      right: 40px;
+    }
+    &.yrden {
+      bottom: 40px;
+      left: 40px;
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      top: -10px;
+      left: -10px;
+      border: 1px solid $main-color;
+      transform: rotate(45deg);
+      z-index: -1;
+    }
+
+    &:hover {
+      filter: none;
+
+      &:before {
+        background: rgba(0, 0, 0, .5);
+      }
+    }
   }
-  .aard {
-    top: 15px;
-    left: 15px;
+  img {
+    width: 50px;
+
+      &.logo1, &.logo2 {
+        position: absolute;
+        left: 50%;
+        width: 250px;
+        transform: translateX(-50%);
+      }
+      &.logo1 {
+        top: 20px;
+      }
+      &.logo2 {
+        top: 50px;
+      }
+      &.aplaMap {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+      }
   }
-  .axii {
-    top: 15px;
-    right: 15px;
+  .border-line {
+    background-color: $main-color;
+    position: fixed;
+
+    &.line1 {
+      top: 65px;
+      left: 150px;
+      width: 25%;
+      height: .5px;
+    }
+    &.line2 {
+      top: 65px;
+      right: 150px;
+      width: 25%;
+      height: .5px;
+    }
+    &.line3 {
+      bottom: 65px;
+      left: 150px;
+      width: 25%;
+      height: .5px;
+    }
+    &.line4 {
+      bottom: 65px;
+      right: 150px;
+      width: 25%;
+      height: .5px;
+    }
+    &.line5 {
+      top: 150px;
+      left: 65px;
+      width: .5px;
+      height: 2%;
+    }
+    &.line6 {
+      bottom: 150px;
+      left: 65px;
+      width: .5px;
+      height: 5%;
+    }
+    &.line7 {
+      top: 150px;
+      right: 65px;
+      width: .5px;
+      height: 2%;
+    }
+    &.line8 {
+      bottom: 150px;
+      right: 65px;
+      width: .5px;
+      height: 5%;
+    }
   }
-  .igni {
-    bottom: 15px;
-    right: 15px;
-  }
-  .yrden {
-    bottom: 15px;
-    left: 15px;
-  }
-  .logo1, .logo2 {
-    left: 50%;
-    width: 250px;
-    transform: translateX(-50%);
-  }
-  .logo1 {
-    top: 10px;
-  }
-  .logo2 {
-    top: 40px;
-  }
+  
 }
 
 .App {
+  position: relative;
   box-sizing: border-box;
   padding: 30px;
   width: 100vw;
   height: 100vh;
   display: grid;
-  grid-template-areas: 
-    'mk fd fd fd fd fd st'
-    'in in in in in in in';
   gap: 20px;
   justify-items: center;
   align-items: center;
   background: url(./images/The_Witcher_3.jpg);
-  background-repeat: no-repeat;
   background-size: cover;
   perspective: 1000px;
 
   .Field {
-    grid-area: fd;
     box-sizing: border-box;
-    width: 400px;
-    height: 400px;
+    width: 450px;
+    height: 450px;
     display: grid;
+    gap: 15px;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    background: darkolivegreen;
-    border: 2px solid brown;
     border-radius: 5px;
-    transform: rotateX(45deg);
-    box-shadow: 0px 5px 10px 4px rgba(0, 0, 0, .5);
+    transform: rotateX(45deg) translateY(-20px);
 
     .cell {
       box-sizing: border-box;
-      border: 1px solid white;
-      transition: .1s all linear;
+      border: 1px solid $main-color;
+      background: darkolivegreen;
+      transition: .03s all linear;
+      box-shadow: 0px 5px 10px 4px rgba(0, 0, 0, .5);
+      cursor: pointer;
 
       &:hover {
-        background: olive;
+        background: olivedrab;
         box-shadow: inset 0px 5px 5px 2px rgba(0, 0, 0, .5);
       }
     }
   }
   .Market {
-    grid-area: mk;
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    width: 100px;
+    transform: translateY(-50%);
+
+    .menu_name {
+      top: -35px;
+      left: 5%;
+      width: 90%;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 5px;
+        left: -10px;
+        width: 10px;
+        height: 10px;
+        background: $main-color;
+        transform: rotate(45deg);
+      }
+      &:after {
+        content: '';
+        position: absolute;
+        top: 5px;
+        right: -10px;
+        width: 10px;
+        height: 10px;
+        background: $main-color;
+        transform: rotate(45deg);
+      }
+    }
+    .item {
+      .info {
+        left: 70px;
+      }
+      &:hover {
+        .info {
+          left: 90px;
+        }
+      }
+    }
   }
   .Stock {
-    grid-area: st;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    width: 100px;
+    transform: translateY(-50%);
+
+    .menu_name {
+      top: -35px;
+      left: 5%;
+      width: 90%;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 5px;
+        left: -10px;
+        width: 10px;
+        height: 10px;
+        background: $main-color;
+        transform: rotate(45deg);
+      }
+      &:after {
+        content: '';
+        position: absolute;
+        top: 5px;
+        right: -10px;
+        width: 10px;
+        height: 10px;
+        background: $main-color;
+        transform: rotate(45deg);
+      }
+    }
   }
   .Invent {
-    grid-area: in;
-    width: 500px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    position: absolute;
+    bottom: 15px;
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+
+    .menu_name {
+      top: -60px;
+      width: 70%;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 27px;
+        left: -5px;
+        width: 10px;
+        height: 10px;
+        background: $main-color;
+        transform: rotate(45deg);
+      }
+      &:after {
+        content: '';
+        position: absolute;
+        top: 27px;
+        right: -5px;
+        width: 10px;
+        height: 10px;
+        background: $main-color;
+        transform: rotate(45deg);
+      }
+    }
   }
 }
