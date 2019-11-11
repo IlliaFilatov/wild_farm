@@ -1,13 +1,16 @@
 const stockReducer = (
   state = {
-    arenaria: 1,
-    celandine: 1,
-    ranogrin: 1,
-    wolfsbane: 1
+    arenaria: 0,
+    celandine: 0,
+    ranogrin: 0,
+    wolfsbane: 0
   },  action) => {
   switch (action.type) {
     case 'SELL_HERB_PART':
       state[action.data] -= 1;
+      return state;
+    case 'HERB_HAS_GROWN':
+      state[action.data] += 1;
       return state;
     default:
       return state;

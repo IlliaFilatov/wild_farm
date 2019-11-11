@@ -6,7 +6,7 @@
         ranogrin: 0,
         wolfsbane: 0
       },
-      coins: 500
+      coins: 5
     },  action) => {
   switch (action.type) {
     case 'BUY':

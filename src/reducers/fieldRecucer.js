@@ -24,7 +24,9 @@ const fieldReducer = (
       state.plantName = '';
       state.isEmpty[action.data] = false;
       return state;
-    default:
+    case 'SET_CELL_FREE': 
+      state.isEmpty[action.data] = true;
+      default:
       return state;
   }
 };

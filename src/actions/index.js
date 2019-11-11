@@ -37,3 +37,15 @@ export const dropSeed = (filledCell) => {
     data: filledCell
   }
 }
+export const herbHasGrown = (herbName) => {
+  return {
+    type: 'HERB_HAS_GROWN',
+    data: herbName
+  }
+}
+export const setCellFree = (cell) => {
+  return {
+    type: 'SET_CELL_FREE',
+    data: cell
+  }
+}

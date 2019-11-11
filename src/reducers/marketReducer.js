@@ -3,22 +3,22 @@ const marketReducer = (
     arenaria: {
       buy: 1,
       sale: 2,
-      time: 10000
+      time: 15000
     },
     celandine: {
       buy: 20,
       sale: 50,
-      time: 120000
+      time: 60000
     },
     ranogrin: {
       buy: 100,
       sale: 500,
-      time: 300000
+      time: 150000
     },
     wolfsbane: {
       buy: 1000,
       sale: 5000,
-      time: 1200000
+      time: 600000
     },
   },  action) => {
   switch (action.type) {
