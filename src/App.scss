@@ -1,4 +1,12 @@
 $main-color: rgba(142,142,142,.5);
+$main-bright-color: rgb(142,142,142);
+
+body {
+  ::selection {
+    background: $main-color;
+    color: $main-bright-color;
+  }
+}
 
 .Menu {
   position: relative;
@@ -18,9 +26,10 @@ $main-color: rgba(142,142,142,.5);
     }
   }
   .item {
-    position: relative;
     box-sizing: border-box;
-    padding: 5px;
+    position: relative;
+    width: 74px;
+    height: 74px;
     cursor: pointer;
 
     img {
@@ -29,16 +38,31 @@ $main-color: rgba(142,142,142,.5);
       max-width: 100%;
       transition: .03s all linear;
     }
-    .info {
+    .amount {
       box-sizing: border-box;
       position: absolute;
-      top: 15px;
+      padding: 0 2px;
+      width: 26px;
+      height: 18px;
+      background: rgba(22, 17, 10, .8);
+      backdrop-filter: blur(3px);
+      color: $main-bright-color;
+      text-align: center;
+      font-size: 12px;
+      line-height: 16px;
+      z-index: -1;
+    }
+    .info {
+      visibility: hidden;
+      box-sizing: border-box;
+      position: absolute;
+      top: 13px;
       padding: 5px 20px;
       min-width: 100px;
       height: 50px;
       background: rgba(22, 17, 10, .2);
       backdrop-filter: blur(3px);
-      color: $main-color;
+      color: $main-bright-color;
       font-size: 18px;
       line-height: 40px;
       text-align: left;
@@ -54,7 +78,6 @@ $main-color: rgba(142,142,142,.5);
       }
       img {
         position: absolute;
-        right: -10px;
         top: 15px;
         display: inline-block;
         height: 20px;
@@ -64,8 +87,8 @@ $main-color: rgba(142,142,142,.5);
       content: '';
       opacity: 0;
       position: absolute;
-      top: 15px;
-      left: 15px;
+      top: 11px;
+      left: 11px;
       width: 50px;
       height: 50px;
       transform: rotate(45deg);
@@ -77,6 +100,7 @@ $main-color: rgba(142,142,142,.5);
         transform: scale(1.1);
       }
       .info {
+        visibility: visible;
         opacity: 1;
       }
       &:before {
@@ -178,7 +202,7 @@ $main-color: rgba(142,142,142,.5);
     &.line4 {
       bottom: 65px;
       right: 150px;
-      width: 25%;
+      width: 20%;
       height: .5px;
     }
     &.line5 {
@@ -235,16 +259,24 @@ $main-color: rgba(142,142,142,.5);
     transform: rotateX(45deg) translateY(-20px);
 
     .cell {
+      position: relative;
       box-sizing: border-box;
+      display: grid;
+      justify-items: center;
+      align-items: center;
       border: 1px solid $main-color;
       background: darkolivegreen;
+      border-radius: 2px;
       transition: .03s all linear;
       box-shadow: 0px 5px 10px 4px rgba(0, 0, 0, .5);
       cursor: pointer;
-
+      
+      img {
+        width: 50%;
+      }
       &:hover {
         background: olivedrab;
-        box-shadow: inset 0px 5px 5px 2px rgba(0, 0, 0, .5);
+        box-shadow: inset 0px 5px 5px 2px rgba(0, 0, 0, .5), 0px 3px 12px 1px rgba(255, 210, 110, .3);
       }
     }
   }
@@ -284,10 +316,14 @@ $main-color: rgba(142,142,142,.5);
     .item {
       .info {
         left: 70px;
+
+        img {
+          right: -10px;
+        }
       }
       &:hover {
         .info {
-          left: 90px;
+          left: 89px;
         }
       }
     }
@@ -325,6 +361,27 @@ $main-color: rgba(142,142,142,.5);
         transform: rotate(45deg);
       }
     }
+    .item {
+      .amount {
+        right: -27px;
+        top: 27px;
+        border: 1px solid $main-color;
+        border-left: none;
+        border-right: none;
+      }
+      .info {
+        right: 70px;
+
+        img {
+          left: -10px;
+        }
+      }
+      &:hover {
+        .info {
+          right: 85px;
+        }
+      }
+    }
   }
   .Invent {
     position: absolute;
@@ -355,6 +412,54 @@ $main-color: rgba(142,142,142,.5);
         width: 10px;
         height: 10px;
         background: $main-color;
+        transform: rotate(45deg);
+      }
+    }
+    .item {
+      .amount {
+        bottom: -23px;
+        right: 23px;
+        border: 1px solid $main-color;
+        border-top: none;
+        border-bottom: none;
+      }
+    }
+    .coins {
+      box-sizing: border-box;
+      position: absolute;
+      top: 32px;
+      right: -70px;
+      padding: 5px 15px;
+      width: 70px;
+      height: 30px;
+      border: 1px solid $main-color;
+      border-right: none;
+      background: rgba(5, 4, 0, .4);
+
+      p {
+        transform: translateY(-2.5px);
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        color: $main-bright-color;
+        font-size: 16px;
+        line-height: 20px;
+      }
+      img {
+        position: absolute;
+        top: 4px;
+        right: -10px;
+        width: 20px;
+        height: 20px;
+      }
+      &:before {
+        content: '';
+        position: absolute;
+        top: 4.5px;
+        left: -10px;
+        width: 20px;
+        height: 20px;
+        background: $main-bright-color;
         transform: rotate(45deg);
       }
     }
