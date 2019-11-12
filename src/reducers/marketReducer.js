@@ -8,17 +8,17 @@ const marketReducer = (
     celandine: {
       buy: 20,
       sale: 50,
-      time: 60000
+      time: 30000
     },
     ranogrin: {
       buy: 100,
       sale: 500,
-      time: 150000
+      time: 60000
     },
     wolfsbane: {
       buy: 1000,
       sale: 5000,
-      time: 600000
+      time: 120000
     },
   },  action) => {
   switch (action.type) {

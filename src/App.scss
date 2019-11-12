@@ -148,7 +148,7 @@ body {
     }
 
     &:hover {
-      filter: none;
+      filter: grayscale(60%);
 
       &:before {
         background: rgba(0, 0, 0, .5);
@@ -257,6 +257,7 @@ body {
     grid-template-rows: 1fr 1fr 1fr;
     border-radius: 5px;
     transform: rotateX(45deg) translateY(-20px);
+    perspective: 50px;
 
     .cell {
       position: relative;
@@ -264,7 +265,9 @@ body {
       display: grid;
       justify-items: center;
       align-items: center;
-      border: 1px solid $main-color;
+      border: 2px solid rgba(70, 20, 10, .3);
+      border-bottom: 2px solid rgba(40, 5, 5, .4);
+      border-right: 2px solid rgba(40, 5, 5, .4);
       background: darkolivegreen;
       border-radius: 2px;
       transition: .03s all linear;
@@ -274,9 +277,20 @@ body {
       img {
         width: 50%;
       }
+      .growing {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: rgba(160, 120, 40, .7);
+      }
       &:hover {
         background: olivedrab;
-        box-shadow: inset 0px 5px 5px 2px rgba(0, 0, 0, .5), 0px 3px 12px 1px rgba(255, 210, 110, .3);
+        border: 1px solid rgba(70, 20, 10, .8);
+        border-bottom: 1px solid rgba(50, 20, 10, .9);
+        border-right: 1px solid rgba(50, 20, 10, .9);
+        box-shadow: inset 0px 5px 5px 2px rgba(0, 0, 0, .5), 0px 5px 15px 1px rgba(70, 60, 60, .6);
+        transform: translateZ(1px);
       }
     }
   }
