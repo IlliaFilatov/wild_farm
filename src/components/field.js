@@ -20,13 +20,15 @@ export default function Field() {
   function plant(e) {
     let cell = e.target,
         cellNumber = cell.getAttribute('data-cell'),
-        cellImage = cell.getElementsByTagName('img')[0];
+        cellImage = cell.getElementsByTagName('img')[0],
+        cellGrowing = cell.getElementsByClassName('growing')[0];
 
-    function growingSeed(herbName, herbDuration) {
+    function growingSeed(herbName, herbDuration, growingAnimation) {
       cellImage.src = herbName;
       dispatch(dropSeed(cellNumber));
       lowerBrightness();
       dispatch(plantSeed(plantName));
+      cellGrowing.classList.add(growingAnimation);
       new Promise((res,rej)=>{
         setTimeout(() => {
           res(dispatch(herbHasGrown(plantName)));
@@ -34,22 +36,23 @@ export default function Field() {
       }).then((result)=>{
         dispatch(setCellFree(cellNumber));
         cellImage.removeAttribute('src');
+        cellGrowing.classList.remove(growingAnimation);
       }) 
     }
     
     if(isWithSeed && isCellsEmpty[cellNumber]) {
       switch (plantName) {
         case 'arenaria':
-          growingSeed(herbArenaria, arenariaDuration);
+          growingSeed(herbArenaria, arenariaDuration, 'arenaria-animation');
           break;
         case 'celandine':
-          growingSeed(herbCelandine, celandineDuration);
+          growingSeed(herbCelandine, celandineDuration, 'celandine-animation');
           break;
         case 'ranogrin':
-          growingSeed(herbRanogrin, ranogrinDuration);
+          growingSeed(herbRanogrin, ranogrinDuration, 'ranogrin-animation');
         break;
         case 'wolfsbane':
-          growingSeed(herbWolfsbane, wolfsbaneDuration);
+          growingSeed(herbWolfsbane, wolfsbaneDuration, 'wolfsbane-animation');
           break;
         default:
           console.log('0')

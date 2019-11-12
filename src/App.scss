@@ -1,6 +1,23 @@
 $main-color: rgba(142,142,142,.5);
 $main-bright-color: rgb(142,142,142);
 
+@keyframes growing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+.arenaria-animation {
+  animation: growing linear 15s 1;
+}
+.celandine-animation {
+  animation: growing linear 30s 1;
+}
+.ranogrin-animation {
+  animation: growing linear 60s 1;
+}
+.wolfsbane-animation {
+  animation: growing linear 120s 1;
+}
+
 body {
   ::selection {
     background: $main-color;
@@ -252,12 +269,12 @@ body {
     width: 450px;
     height: 450px;
     display: grid;
-    gap: 15px;
+    gap: 5px;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     border-radius: 5px;
     transform: rotateX(45deg) translateY(-20px);
-    perspective: 50px;
+    perspective: 150px;
 
     .cell {
       position: relative;
@@ -269,6 +286,8 @@ body {
       border-bottom: 2px solid rgba(40, 5, 5, .4);
       border-right: 2px solid rgba(40, 5, 5, .4);
       background: darkolivegreen;
+      background-position: center;
+      background-size: cover;
       border-radius: 2px;
       transition: .03s all linear;
       box-shadow: 0px 5px 10px 4px rgba(0, 0, 0, .5);
@@ -276,15 +295,19 @@ body {
       
       img {
         width: 50%;
+        filter: drop-shadow(0 3px 5px #000);
+        z-index: 2;
       }
       .growing {
         position: absolute;
         top: 0;
         left: 0;
         height: 100%;
-        background: rgba(160, 120, 40, .7);
+        background: olive;
+        transition: .05s linear all;
       }
       &:hover {
+        filter: brightness(130%);
         background: olivedrab;
         border: 1px solid rgba(70, 20, 10, .8);
         border-bottom: 1px solid rgba(50, 20, 10, .9);
