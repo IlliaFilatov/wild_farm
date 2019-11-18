@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import seedsArenaria from '../images/seeds-arenaria.png';
 import seedsCelandine from '../images/seeds-celandine.png';
 import seedsRanogrin from '../images/seeds-ranogrin.png';
@@ -9,6 +9,7 @@ import { takeSeed } from '../actions';
 import { useSelector, useDispatch } from 'react-redux';
 
 export default function Invent() {
+  const [data, setData] = useState({id:'',arenaria:0,celandine:0,ranogrin:0,wolfsbane:0,coins:0});
 
   const arenariaSeedsAmount = useSelector(state => state.invent.seeds.arenaria),
         celandineSeedsAmount = useSelector(state => state.invent.seeds.celandine),
@@ -16,6 +17,23 @@ export default function Invent() {
         wolfsbaneSeedsAmount = useSelector(state => state.invent.seeds.wolfsbane),
         coinsAmount = useSelector(state => state.invent.coins),
         dispatch = useDispatch();
+
+  useEffect(()=>{
+    callBackendAPI() 
+    .then(res => {
+      setData({ data: res });
+    })
+    .catch(err => console.log(err));
+  });
+    
+  const callBackendAPI = async () => {
+    const response = await fetch('/express_backend/invent');
+    const body = await response.json();
+    if (response.status !== 200) {
+      throw Error(body.message) 
+    }
+    return body;
+  };
 
   function cursorItem(e) {
     let seeds = e.target.closest('.item').getAttribute('data-seeds'),
@@ -50,7 +68,6 @@ export default function Invent() {
         break;
     }
   }
-
   return (
       <div className="Invent Menu">
         <div className="menu_name">

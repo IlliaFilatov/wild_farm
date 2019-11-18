@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { dropSeed, plantSeed, herbHasGrown, setCellFree } from '../actions';
 
 export default function Field() {
+
   const isWithSeed = useSelector(state => state.field.isWithSeed), 
         plantName = useSelector(state => state.field.plantName),
         arenariaDuration = useSelector(state => state.market.arenaria.time),
